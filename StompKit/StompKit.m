@@ -352,6 +352,8 @@ CFAbsoluteTime serverActivity;
         connectHeaders[kHeaderHeartBeat] = self.clientHeartBeat;
     }
 
+    NSLog(@"%@", [connectHeaders description])
+
     [self sendFrameWithCommand:kCommandConnect
                        headers:connectHeaders
                           body: nil];
