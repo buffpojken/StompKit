@@ -6,7 +6,11 @@ Pod::Spec.new do |s|
   s.license      = 'Apache License, Version 2.0'
   s.author       = "Jeff Mesnil"
   s.source       = { :git => 'https://github.com/mobile-web-messaging/StompKit.git', :tag => "#{s.version}" }
-  s.platform     = :ios, 5.0
+  
+  s.ios.deployment_target = '5.0'
+  s.osx.deployment_target = '10.7'
+
+  
   s.source_files = 'StompKit/*.{h,m}'
   s.public_header_files = 'StompKit/StompKit.h'
   s.requires_arc = true
