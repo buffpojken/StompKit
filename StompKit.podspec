@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "StompKit"
-  s.version      = "0.1.2"
+  s.version      = "0.1.3"
   s.summary      = "STOMP Objective-C Client for iOS."
   s.homepage     = "https://github.com/mobile-web-messaging/StompKit"
   s.license      = 'Apache License, Version 2.0'
@@ -14,5 +14,5 @@ Pod::Spec.new do |s|
   s.source_files = 'StompKit/*.{h,m}'
   s.public_header_files = 'StompKit/StompKit.h'
   s.requires_arc = true
-  s.dependency 'CocoaAsyncSocket', '7.3.5'
+  s.dependency 'CocoaAsyncSocket', '7.4'
 end
