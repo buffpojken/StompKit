@@ -60,7 +60,7 @@
 @property (nonatomic, weak) NSTimer *pinger;
 @property (nonatomic, weak) NSTimer *ponger;
 
-@property (nonatomic, copy) void (^disconnectedHandler)(NSError *error);
+#@property (nonatomic, copy) void (^disconnectedHandler)(NSError *error);
 @property (nonatomic, copy) void (^connectionCompletionHandler)(STOMPFrame *connectedFrame, NSError *error);
 @property (nonatomic, retain) NSMutableDictionary *subscriptions;
 
