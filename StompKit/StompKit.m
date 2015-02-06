@@ -367,6 +367,12 @@ CFAbsoluteTime serverActivity;
             body:body];
 }
 
+- (void)unsubscribe:(NSString *)identifier {
+    [self sendFrameWithCommand:kCommandUnsubscribe
+                              headers:@{kHeaderID: identifier}
+                                 body:nil];
+}
+
 - (void)sendTo:(NSString *)destination
        headers:(NSDictionary *)headers
           body:(NSString *)body {
