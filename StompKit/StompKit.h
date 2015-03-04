@@ -21,6 +21,7 @@
 #define kHeaderMessage       @"message"
 #define kHeaderPasscode      @"passcode"
 #define kHeaderReceipt       @"receipt"
+#define kHeaderPersistent    @"persistent"
 #define kHeaderReceiptID     @"receipt-id"
 #define kHeaderSession       @"session"
 #define kHeaderSubscription  @"subscription"
