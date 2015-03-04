@@ -242,7 +242,7 @@
 
 - (void)unsubscribe {
     [self.client sendFrameWithCommand:kCommandUnsubscribe
-                              headers:@{kHeaderID: self.identifier}
+                              headers:@{kHeaderID: self.identifier, kHeaderPersistent: @"true"}
                                  body:nil];
 }
 

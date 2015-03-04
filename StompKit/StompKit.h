@@ -26,6 +26,7 @@
 #define kHeaderSession       @"session"
 #define kHeaderSubscription  @"subscription"
 #define kHeaderTransaction   @"transaction"
+#define kHeaderPersistent    @"persistent"
 
 #pragma mark Ack Header Values
 
