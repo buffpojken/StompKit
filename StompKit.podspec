@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "StompKit"
-  s.version      = "0.1.12"
+  s.version      = "0.1.13"
   s.summary      = "STOMP Objective-C Client for iOS."
   s.homepage     = "https://github.com/mobile-web-messaging/StompKit"
   s.license      = 'Apache License, Version 2.0'

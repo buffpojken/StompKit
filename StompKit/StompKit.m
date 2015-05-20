@@ -336,7 +336,7 @@ CFAbsoluteTime serverActivity;
     self.connectionCompletionHandler = completionHandler;
 
     NSError *err;
-    if(![self.socket connectToHost:host onPort:port error:&err]) {
+    if(![self.socket connectToHost:host onPort:port withTimeout:3.0 error:&err]) {
         if (self.connectionCompletionHandler) {
             self.connectionCompletionHandler(nil, err);
         }
