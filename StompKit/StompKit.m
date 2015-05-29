@@ -15,9 +15,9 @@
 
 #pragma mark Logging macros
 
-#if 0 // set to 1 to enable logs
+#if 1 // set to 1 to enable logs
 
-#define LogDebug(frmt, ...) NSLog(frmt, ##__VA_ARGS__);
+#define LogDebug(frmt, ...) DDLogVerbose(frmt, ##__VA_ARGS__);
 
 #else
 
@@ -462,6 +462,8 @@ CFAbsoluteTime serverActivity;
 }
 
 - (void)checkPong:(NSTimer *)timer  {
+
+
     NSDictionary *dict = timer.userInfo;
     NSInteger ttl = [dict[@"ttl"] intValue];
 
