@@ -18,7 +18,9 @@
 
 #if 1 // set to 1 to enable logs
 
-#define LogDebug(frmt, ...) NSLog(frmt, ##__VA_ARGS__);
+static const int ddLogLevel = LOG_LEVEL_VERBOSE;
+
+#define LogDebug(frmt, ...) DDLogVerbose(frmt, ##__VA_ARGS__);
 
 #else
 
