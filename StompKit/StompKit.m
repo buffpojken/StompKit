@@ -442,6 +442,7 @@ CFAbsoluteTime serverActivity;
 }
 
 - (void)disconnect:(void (^)(NSError *error))completionHandler {
+  LogDebug(@"Regular disconnected used");
     self.disconnectedHandler = completionHandler;
     [self sendFrameWithCommand:kCommandDisconnect
                        headers:nil
@@ -449,7 +450,7 @@ CFAbsoluteTime serverActivity;
     [self.subscriptions removeAllObjects];
     [self.pinger invalidate];
     [self.ponger invalidate];
-    [self.socket disconnectAfterReadingAndWriting];
+    [self.socket disconnect];
 }
 
 
@@ -477,8 +478,6 @@ CFAbsoluteTime serverActivity;
 }
 
 - (void)checkPong:(NSTimer *)timer  {
-
-
     NSDictionary *dict = timer.userInfo;
     NSInteger ttl = [dict[@"ttl"] intValue];
 
