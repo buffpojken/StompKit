@@ -468,7 +468,7 @@ CFAbsoluteTime serverActivity;
     CFAbsoluteTime delta = CFAbsoluteTimeGetCurrent() - serverActivity;
     if (delta > (ttl * 2)) {
         LogDebug(@"did not receive server activity for the last %f seconds", delta);
-        [self disconnect:errorHandler];
+        [self disconnect:self.errorHandler];
     }
 }
 
