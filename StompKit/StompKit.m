@@ -437,7 +437,8 @@ CFAbsoluteTime serverActivity;
     [self.subscriptions removeAllObjects];
     [self.pinger invalidate];
     [self.ponger invalidate];
-    [self.socket disconnectAfterReadingAndWriting];
+//    [self.socket disconnectAfterReadingAndWriting];
+    [self.socket disconnect];
 }
 
 
