@@ -429,6 +429,18 @@ CFAbsoluteTime serverActivity;
     [self disconnect: nil];
 }
 
+- (void)disconnect(void (^)(NSError *error))completionHandler irresponsibleDisconnect:(BOOL)force{
+  LogDebug(@"Using irresponsibleDisconnect"); 
+  self.disconnectedHandler = completionHandler;
+  [self sendFrameWithCommand:kCommandDisconnect
+                     headers:nil
+                        body:nil];
+  [self.subscriptions removeAllObjects];
+  [self.pinger invalidate];
+  [self.ponger invalidate];
+  [self.socket disconnect];
+}
+
 - (void)disconnect:(void (^)(NSError *error))completionHandler {
     self.disconnectedHandler = completionHandler;
     [self sendFrameWithCommand:kCommandDisconnect
@@ -437,8 +449,7 @@ CFAbsoluteTime serverActivity;
     [self.subscriptions removeAllObjects];
     [self.pinger invalidate];
     [self.ponger invalidate];
-//    [self.socket disconnectAfterReadingAndWriting];
-    [self.socket disconnect];
+    [self.socket disconnectAfterReadingAndWriting];
 }
 
 
@@ -474,7 +485,7 @@ CFAbsoluteTime serverActivity;
     CFAbsoluteTime delta = CFAbsoluteTimeGetCurrent() - serverActivity;
     if (delta > (ttl * 2)) {
         LogDebug(@"did not receive server activity for the last %f seconds", delta);
-        [self disconnect:self.errorHandler];
+        [self disconnect:self.errorHandler irresponsibleDisconnect:true];
     }
 }
 
