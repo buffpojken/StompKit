@@ -429,7 +429,7 @@ CFAbsoluteTime serverActivity;
     [self disconnect: nil];
 }
 
-- (void)disconnect(void (^)(NSError *error))completionHandler irresponsibleDisconnect:(BOOL)force{
+- (void)disconnect:(void (^)(NSError *error))completionHandler irresponsibleDisconnect:(BOOL)force{
   LogDebug(@"Using irresponsibleDisconnect"); 
   self.disconnectedHandler = completionHandler;
   [self sendFrameWithCommand:kCommandDisconnect
