@@ -16,7 +16,7 @@
 
 #pragma mark Logging macros
 
-#if 1 // set to 1 to enable logs
+#if 0 // set to 1 to enable logs
 
 static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 
