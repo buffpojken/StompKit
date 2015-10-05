@@ -117,5 +117,6 @@ typedef void (^STOMPMessageHandler)(STOMPMessage *message);
 
 - (void)disconnect;
 - (void)disconnect:(void (^)(NSError *error))completionHandler;
+- (void)disconnect:(void (^)(NSError *error))completionHandler irresponsibleDisconnect:(BOOL)force; 
 
 @end

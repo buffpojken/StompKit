@@ -441,6 +441,23 @@ CFAbsoluteTime serverActivity;
     [self.socket disconnectAfterReadingAndWriting];
 }
 
+- (void)disconnect:(void (^)(NSError *error))completionHandler irresponsibleDisconnect:(BOOL)force{
+  if(force){
+    NSLog(@"Using forced disconnect to prevent hanging...");
+    self.disconnectedHandler = completionHandler;
+    [self sendFrameWithCommand:kCommandDisconnect
+                       headers:nil
+                          body:nil];
+    [self.subscriptions removeAllObjects];
+    [self.pinger invalidate];
+    [self.ponger invalidate];
+    [self.socket disconnect];
+  }else{
+    [self disconnect: completionHandler]; 
+  }
+}
+
+
 
 #pragma mark -
 #pragma mark Private Methods
@@ -472,7 +489,7 @@ CFAbsoluteTime serverActivity;
     CFAbsoluteTime delta = CFAbsoluteTimeGetCurrent() - serverActivity;
     if (delta > (ttl * 2)) {
         LogDebug(@"did not receive server activity for the last %f seconds", delta);
-        [self disconnect:self.errorHandler];
+        [self disconnect:self.errorHandler irresponsibleDisconnect: true];
     }
 }
 
